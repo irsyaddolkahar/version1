@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>KIRA BMI</title>
+</head>
+
+<body>
+<h1>KIRA BMI</h1>
+<form name="kirabmi">
+  Berat (kg): <input type="text" name="nilaiberat">
+   <p>Tinggi (m): <input type="text" name="nilaitinggi">
+   <p><input type="button" value="HANTAR" onclick="proses()">
+   <input type="reset" value="RESET" onclick="padam()">
+</form>
+
+<table border="1" cellspacing="0" cellpadding="10">
+   <tr>
+	<th>Berat
+	<th>Tinggi
+	<th>BMI
+	<th>Keputusan
+   </tr>
+
+   <tr align="center">
+	<td id="output1">-
+	<td id="output2">-
+	<td id="output3">-
+	<td id="output4">-
+   </tr>
+</table>
+
+<script>
+
+function proses(){
+   var berat = parseFloat(document.kirabmi.nilaiberat.value);
+   var tinggi = parseFloat(document.kirabmi.nilaitinggi.value);
+   var bmi= (berat/tinggi**2);
+   var keputusan = "-";
+   var warnalatar = "white";
+   var warnateks = "black";
+
+   if (isNaN(berat)||isNaN(tinggi)){
+   	alert("INPUT SALAH!\nSILA MASUKKAN NOMBOR.");
+	berat="-";
+	tinggi="-";
+   }
+
+   else{
+	if (bmi<18.5){
+	   keputusan = "KURUS";
+	   warnalatar = "red";
+	   warnateks = "black";
+   	}
+
+   	else if (bmi<24.9){
+	   keputusan = "NORMAL";
+	   warnalatar = "green";
+	   warnateks = "black";
+   	}
+
+	else if (bmi<29.9){
+	   keputusan = "GEMUK";
+	   warnalatar = "yellow";
+	   warnateks = "red";
+   	}
+	
+   	else{
+	   keputusan = "OBESITI";
+	   warnalatar = "red";
+	   warnateks = "yellow";
+   	}
+   }
+
+   document.getElementById("output1").innerHTML = berat ;
+   document.getElementById("output2").innerHTML = tinggi ; 
+   document.getElementById("output3").innerHTML = bmi.toFixed(2); 
+   document.getElementById("output4").innerHTML = keputusan;
+   output4.style.backgroundColor = warnalatar;
+   output4.style.color = warnateks;
+}
+
+function padam(){
+   document.getElementById("output1").innerHTML = "-";
+   document.getElementById("output2").innerHTML = "-"; 
+   document.getElementById("output3").innerHTML = "-"; 
+   document.getElementById("output4").innerHTML = "-"; 
+   output4.style.backgroundColor = "white";
+   output4.style.color = "black";
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
